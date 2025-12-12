@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carl4Dev</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="icon" href="assets/images/logo-tempo.jpg" />
+    <style></style>
+  </head>
+  <canvas id="particle-canvas"> </canvas>
+  <body>
+    <link rel="stylesheet" href="index.css" />
+
+    <!-- Customize Now Modal -->
+    <div
+      class="modal fade"
+      id="customizeNowModal"
+      tabindex="-1"
+      aria-labelledby="customizeNowModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content custom-modal">
+          <div class="modal-header border-0">
+            <h5 class="modal-title text-white" id="customizeNowModalLabel">
+              Customize Your Website
+            </h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+
+          <div class="modal-body">
+            <form id="customProjectForm" class="custom-form">
+              <input
+                type="text"
+                class="custom-input"
+                id="projectName"
+                placeholder="Project Name"
+                required
+              />
+
+              <select class="custom-input" id="websiteType" required>
+                <option class="" value="" disabled selected>
+                  Select Website Type
+                </option>
+                <option value="Portfolio">Portfolio</option>
+                <option value="E-commerce">E-commerce</option>
+                <option value="Blog">Blog</option>
+                <option value="Landing Page">Landing Page</option>
+                <option value="Business Website">Business Website</option>
+              </select>
+
+              <select class="custom-input" id="designStyle" required>
+                <option value="" disabled selected>Select Design Style</option>
+                <option value="Minimalistic">Minimalistic</option>
+                <option value="Modern">Modern</option>
+                <option value="Vintage">Vintage</option>
+                <option value="Dark Theme">Dark Theme</option>
+                <option value="Colorful">Colorful</option>
+              </select>
+
+              <input
+                type="text"
+                class="custom-input"
+                id="preferredColor"
+                placeholder="Preferred Color"
+                required
+              />
+
+              <input
+                type="number"
+                class="custom-input"
+                id="pageCount"
+                placeholder="Number of Pages"
+                min="1"
+                required
+              />
+
+              <select class="custom-input" id="functionality" multiple required>
+                <option value="Contact Form">Contact Form</option>
+                <option value="Image Gallery">Image Gallery</option>
+                <option value="Product Listing">Product Listing</option>
+                <option value="Blog Section">Blog Section</option>
+                <option value="User Login">User Login (Frontend Only)</option>
+              </select>
+
+              <textarea
+                class="custom-textarea"
+                id="projectDetails"
+                rows="3"
+                placeholder="Describe your website idea..."
+                required
+              ></textarea>
+
+              <input
+                type="text"
+                class="custom-input"
+                id="clientName"
+                placeholder="Your Name (Optional)"
+              />
+
+              <input
+                type="email"
+                class="custom-input"
+                id="clientEmail"
+                placeholder="Your Email (Optional)"
+              />
+
+              <button type="submit" class="custom-submit">
+                Submit via Messenger
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <header class="navbar-dark fixed-top shadow-sm blue-nav">
+      <nav class="navbar navbar-expand-lg container">
+        <a class="navbar-brand fw-bold text-white fs-2" href="#home"
+          >Rangie4Dev</a
+        >
+
+        <button
+          class="navbar-toggler bg-light"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarScroll"
+          aria-controls="navbarScroll"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarScroll">
+          <ul class="navbar-nav ms-auto gap-3">
+            <li class="nav-item">
+              <a class="nav-link text-white fw-semibold" href="#journal"
+                >Journal</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white fw-semibold" href="#tech-stack"
+                >Tech Stack</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white fw-semibold" href="#projects"
+                >Projects</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white fw-semibold" href="#contact-me"
+                >Contact Me</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <div
+      id="home"
+      class="hero-section container d-flex flex-column justify-content-center align-items-center text-center"
+    >
+      <!-- IMAGE ON TOP -->
+      <div class="hero-image-wrapper mb-4">
+        <img
+          src="assets/images/computer.jpg"
+          alt="Profile Image"
+          class="hero-top-img"
+        />
+      </div>
+
+      <div class="hero-left">
+        <h1 class="hero-title">
+          Looking for a <span class="text-accent">Developer</span>?
+        </h1>
+
+        <div class="typing-container">
+          <h1 class="typing-text">Hi! I'm Rangie.</h1>
+        </div>
+
+        <p class="hero-desc">
+          I create clean and responsive websites using modern tools. I’m still
+          improving my skills, but I always give my best in every project.
+        </p>
+
+        <button
+          type="button"
+          class="btn btn-accent fw-bold fs-5 mt-3"
+          data-bs-toggle="modal"
+          data-bs-target="#customizeNowModal"
+        >
+          Customize Now
+        </button>
+      </div>
+    </div>
+
+    <div id="journal" class="row">
+      <div class="col-12">
+        <section id="about" class="journal-section p-5">
+          <h2 class="section-title text-center mb-4">
+            Industry Immersion Journal
+          </h2>
+
+          <p class="section-desc text-center mb-5">
+            A compilation of observations and learnings from different
+            IT-related organizations I visited. These experiences allowed me to
+            understand how technology is applied in real industries.
+          </p>
+
+          <div class="journal-grid">
+            <div class="journal-card">
+              <h3>Worldtech Information Solutions, Inc.</h3>
+              <p class="label">Observations</p>
+              <p>
+                Worldtech shows strong specialization in cybersecurity by
+                offering certified training and consultancy services.
+              </p>
+              <p class="label">Learnings</p>
+              <p>
+                Continuous training and updated skills are essential to keep up
+                with fast-evolving cyber threats.
+              </p>
+            </div>
+
+            <div class="journal-card">
+              <h3>Rivan IT Cebu</h3>
+              <p class="label">Observations</p>
+              <p>
+                Rivan IT does more than repair computers — they supply equipment
+                and offer tutoring for students learning to code.
+              </p>
+              <p class="label">Learnings</p>
+              <p>
+                I learned how to connect a telephone properly and understood the
+                importance of communication systems in the real world.
+              </p>
+            </div>
+
+            <div class="journal-card">
+              <h3>CodeChum</h3>
+              <p class="label">Observations</p>
+              <p>
+                CodeChum provides features for multiple programming languages
+                and AI-assisted learning, making it a strong tool for coding
+                education.
+              </p>
+              <p class="label">Learnings</p>
+              <p>
+                Technology can make complex subjects like programming more
+                accessible and engaging for students and teachers.
+              </p>
+            </div>
+
+            <div class="journal-card">
+              <h3>Mata Technologies, Inc.</h3>
+              <p class="label">Observations</p>
+              <p>
+                Mata Technologies positively impacts tourism through virtual
+                reality maps and interactive virtual tours.
+              </p>
+              <p class="label">Learnings</p>
+              <p>
+                Local companies can use technology to create innovative
+                solutions that meet regional needs.
+              </p>
+            </div>
+
+            <div class="journal-card">
+              <h3>T.A.R.S.I.E.R 117</h3>
+              <p class="label">Observations</p>
+              <p>
+                The tarsier can rotate its head almost 180 degrees — a unique
+                survival adaptation.
+              </p>
+              <p class="label">Learnings</p>
+              <p>
+                The tarsier’s eyes, neck, and fingers show how animals evolve
+                traits that help them survive in their environment.
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <section id="tech-stack" class="tech-section">
+      <div class="container text-center">
+        <h2 class="section-title">Tech Stack</h2>
+        <p class="section-desc mb-5">
+          The core tools I use for building simple, responsive websites.
+        </p>
+
+        <div class="tech-grid">
+          <div class="tech-card">
+            <img src="assets/images/html-removebg-preview (1).png" alt="HTML" />
+            <h4>HTML</h4>
+          </div>
+
+          <div class="tech-card">
+            <img src="assets/images/css1-removebg-preview.png" alt="CSS" />
+            <h4>CSS</h4>
+          </div>
+
+          <div class="tech-card">
+            <img
+              src="assets/images/Boostrap_logo_01-removebg-preview.png"
+              alt="Bootstrap"
+            />
+            <h4>Bootstrap</h4>
+          </div>
+
+          <div class="tech-card">
+            <img
+              src="assets/images/github-removebg-preview (1).png"
+              alt="GitHub"
+            />
+            <h4>GitHub</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="projects" class="row mt-5">
+      <div class="col-12">
+        <section class="projects-section p-5">
+          <h2 class="section-title text-center mb-3">Projects</h2>
+          <p class="section-sub text-center mb-5">
+            A collection of projects I built while learning and improving as a
+            developer.
+          </p>
+
+          <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card">
+              <img
+                src="assets/images/computer.jpg"
+                class="project-img"
+                alt="E-commerce Screenshot"
+              />
+              <div class="project-body">
+                <h3 class="project-title">Electronic Books E-commerce</h3>
+                <p class="project-desc">
+                  A simple e-commerce website for browsing and viewing digital
+                  products.
+                </p>
+                <a
+                  href="https://www.facebook.com/ranjie.mariano"
+                  target="_blank"
+                  class="btn-source"
+                >
+                  Source Code
+                </a>
+              </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card">
+              <img
+                src="assets/images/computer.jpg"
+                class="project-img"
+                alt="Cake Shop Screenshot"
+              />
+              <div class="project-body">
+                <h3 class="project-title">Cake Shop Landing Page</h3>
+                <p class="project-desc">
+                  A modern landing page showcasing cakes, offers, and store
+                  highlights.
+                </p>
+                <a
+                  href="https://www.facebook.com/ranjie.mariano"
+                  target="_blank"
+                  class="btn-source"
+                >
+                  Source Code
+                </a>
+              </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card">
+              <img
+                src="assets/images/computer.jpg"
+                class="project-img"
+                alt="CineNext Screenshot"
+              />
+              <div class="project-body">
+                <h3 class="project-title">CineNext</h3>
+                <p class="project-desc">
+                  A simple movie preview website with summaries of upcoming
+                  films.
+                </p>
+                <a
+                  href="https://www.facebook.com/ranjie.mariano"
+                  target="_blank"
+                  class="btn-source"
+                >
+                  Source Code
+                </a>
+              </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card">
+              <img
+                src="assets/images/computer.jpg"
+                class="project-img"
+                alt="GWA Calculator Screenshot"
+              />
+              <div class="project-body">
+                <h3 class="project-title">GWA Calculator</h3>
+                <p class="project-desc">
+                  A tool for calculating GWA using STI’s grading system.
+                </p>
+                <a
+                  href="https://www.facebook.com/ranjie.mariano"
+                  target="_blank"
+                  class="btn-source"
+                >
+                  Source Code
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div
+      id="contact-me"
+      class="row justify-content-center mt-5 p-5"
+      style="background: #0b111f"
+    >
+      <div class="col-12 col-md-8 text-center text-white">
+        <h2 class="fw-bolder">Contact Me</h2>
+        <p class="text-white-50 mb-4">
+          Here are my official contacts. Feel free to reach out!
+        </p>
+
+        <div class="contact-info fs-5">
+          <p><strong>Email:</strong> rangie.mariano@hcdc.edu.ph</p>
+          <p>
+            <strong>Facebook:</strong>
+            <a
+              href="https://www.facebook.com/ranjie.mariano"
+              class="text-info"
+              target="_blank"
+              >facebook.com/ranjie.mariano</a
+            >
+          </p>
+          <p>
+            <strong>GitHub:</strong>
+            <a
+              href="https://github.com/rangiemariano?fbclid=IwZXh0bgNhZW0CMTAAYnJpZBExNEVvbTBXNUlQbjlmYUFqdnNydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR6lCL-w9cZqnpYh857m9znEYsw6Pm4V-1xMSpI5vrk07p759wecKh34uizO_Q_aem_3Up2QMQetcaKL1TSvcTp9A"
+              class="text-info"
+              target="_blank"
+              >github.com/rangiemariano</a
+            >
+          </p>
+          <p><strong>Phone:</strong> 09269524618</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Other Projects Modal -->
+    <div id="otherProjectsModal" class="other-projects-modal">
+      <div class="other-projects-modal-content">
+        <span class="other-projects-close">&times;</span>
+        <h2>Other Projects</h2>
+        <div class="other-projects-list">
+          <!-- Project Cards -->
+          <div class="project-card">
+            <h3>Project A</h3>
+            <p>Description of Project A.</p>
+            <a href="#" class="btn-live">Live Demo</a>
+            <a href="#" class="btn-source">Source Code</a>
+          </div>
+          <div class="project-card">
+            <h3>Project B</h3>
+            <p>Description of Project B.</p>
+            <a href="#" class="btn-live">Live Demo</a>
+            <a href="#" class="btn-source">Source Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+    integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+    crossorigin="anonymous"
+  ></script>
+</html>
